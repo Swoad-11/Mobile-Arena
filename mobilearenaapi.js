@@ -1,26 +1,28 @@
 const searchPhone = () => {
     const searchFeild = document.getElementById('searchBox');
     console.log(searchFeild.value);
-
+    searchInput = searchFeild.value;
     searchFeild.value = '';
 
-    const url = `https://openapi.programming-hero.com/api/phones?search=${searchFeild.value}`;
+    const url = `https://openapi.programming-hero.com/api/phones?search=${searchInput}`;
+    console.log(url);
     fetch(url)
     .then(res => res.json())
-    .then(data => searchResult(data));
+    .then(data => searchResult(data.data));
+    
 }
 
-const searchResult = phones => {
-    console.log(phones);
+const searchResult = data => {
+  console.log(data);
     const phoneResult = document.getElementById('phoneCards');
-    for(const phone in phones){
-        const div = document.createElement('div');
+    data.forEach(phone => {
+      const div = document.createElement('div');
         div.classList.add('col');
         div.innerHTML = `
         <div class="card">
-                      <img src="${phone.image}" class="card-img-top" alt="...">
+                      <img src="${phone.image}" class="rounded mx-auto d-block mt-3" alt="...">
                       <div class="card-body">
-                        <h5 class="card-title">${phone.brand}</h5>
+                        <h5 class="card-title">${phone.phone_name}</h5>
                         <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                       </div>
                       <div class="card-footer">
@@ -29,5 +31,5 @@ const searchResult = phones => {
                     </div>
         `;
         phoneResult.appendChild(div);
-    }
+    });
 }
