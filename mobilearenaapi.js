@@ -11,11 +11,13 @@ const searchPhone = () => {
 }
 
 const searchResult = data => {
+  if(data.status == true){
     const phoneResult = document.getElementById('phoneCards');
-    data.forEach(phone => {
+    const phones = data.slice(0,20);
+    phones.forEach(phone => {
       const div = document.createElement('div');
         div.classList.add('col');
-        div.innerHTML = `
+          div.innerHTML = `
         <div class="card">
                       <img src="${phone.image}" class="rounded mx-auto d-block mt-3" alt="${phone.phone_name}">
                       <div class="card-body">
@@ -27,8 +29,19 @@ const searchResult = data => {
                     </div>
         `;
         phoneResult.appendChild(div);
-    });
-}
+        });}
+
+        else{
+          const phoneResult = document.getElementById('headerID');
+      const div = document.createElement('div');
+        div.classList.add('message');
+          div.innerHTML = `
+                  <h1 class="card-title text-center">No Search Results found</h1>
+        `;
+        phoneResult.appendChild(div);
+        }
+    }
+
 
 const phoneInfo = phoneID => {
   const url = `https://openapi.programming-hero.com/api/phone/${phoneID}`;
@@ -53,6 +66,7 @@ const displayPhoneInfo = phoneDetails => {
               <li class="list-group-item list-group-item-danger">Memory: ${phoneDetails.mainFeatures.memory}</li>
               <li class="list-group-item list-group-item-warning">Sensors: ${phoneDetails.mainFeatures.sensors}</li>
               <li class="list-group-item list-group-item-dark">${phoneDetails.releaseDate}</li>
+              <li class="list-group-item list-group-item-dark"> ${phoneDetails.others.WLAN}</li>
             </ul>
       `;
       phoneInfo.appendChild(div);
