@@ -6,12 +6,11 @@ const searchPhone = () => {
     const url = `https://openapi.programming-hero.com/api/phones?search=${searchInput}`;
     fetch(url)
     .then(res => res.json())
-    .then(data => searchResult(data.data));
-    
+    .then(data => searchResult(data.status,data.data));
 }
 
-const searchResult = data => {
-  if(data.status == true){
+const searchResult = (status,data) => {
+  if(status == true ){
     const phoneResult = document.getElementById('phoneCards');
     const phones = data.slice(0,20);
     phones.forEach(phone => {
