@@ -35,7 +35,7 @@ const searchResult = (status,data) => {
       const div = document.createElement('div');
         div.classList.add('message');
           div.innerHTML = `
-                  <h1 class="card-title text-center">No Search Results found</h1>
+                  <h1 class="card-title text-center">No Search Results Found!</h1>
         `;
         phoneResult.appendChild(div);
         }
@@ -64,9 +64,17 @@ const displayPhoneInfo = phoneDetails => {
               <li class="list-group-item list-group-item-success">Chipset: ${phoneDetails.mainFeatures.chipSet}</li>
               <li class="list-group-item list-group-item-danger">Memory: ${phoneDetails.mainFeatures.memory}</li>
               <li class="list-group-item list-group-item-warning">Sensors: ${phoneDetails.mainFeatures.sensors}</li>
+              <li class="list-group-item list-group-item-info">Others: 
+               <ul class="list-group">
+                 <li class="list-group-item">${phoneDetails.others.WLAN}</li>
+                 <li class="list-group-item">${phoneDetails.others.Bluetooth} </li>
+                 <li class="list-group-item"> ${phoneDetails.others.GPS}</li>
+                 <li class="list-group-item"> ${phoneDetails.others.GPS}</li>
+                 <li class="list-group-item">${phoneDetails.others.Radio}</li>
+                 <li class="list-group-item">${phoneDetails.others.USB}</li>
+               </ul>
+              </li>
               <li class="list-group-item list-group-item-dark">${phoneDetails.releaseDate}</li>
-              <li class="list-group-item list-group-item-dark"> ${phoneDetails.others.WLAN}</li>
-            </ul>
       `;
       phoneInfo.appendChild(div);
 }
