@@ -48,10 +48,16 @@ const phoneInfo = phoneID => {
   fetch(url)
   .then(res => res.json())
   .then(data => displayPhoneInfo(data.data));
-  
 }
 
 const displayPhoneInfo = phoneDetails => {
+  let releaseDate = phoneDetails.releaseDate;
+    if (releaseDate.length != 0) {
+        releaseDate = phoneDetails.releaseDate;
+    }
+    else {
+        releaseDate = "Coming Soon";
+    }
   const phoneInfo = document.getElementById('phoneDetails');
     const div = document.createElement('div');
       div.classList.add('card-footer');
@@ -74,7 +80,7 @@ const displayPhoneInfo = phoneDetails => {
                  <li class="list-group-item">USB: ${phoneDetails?.others?.USB}</li>
                </ul>
               </li>
-              <li class="list-group-item list-group-item-dark">${phoneDetails?.releaseDate}</li>
+              <li class="list-group-item list-group-item-dark">${releaseDate}</li>
       `;
       phoneInfo.appendChild(div);
 }
