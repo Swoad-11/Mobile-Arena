@@ -66,15 +66,15 @@ const displayPhoneInfo = phoneDetails => {
               <li class="list-group-item list-group-item-warning">Sensors: ${phoneDetails.mainFeatures.sensors}</li>
               <li class="list-group-item list-group-item-info">Others 
                <ul class="list-group">
-                 <li class="list-group-item">WLAN: ${phoneDetails.others.WLAN}</li>
-                 <li class="list-group-item">Bluetooth: ${phoneDetails.others.Bluetooth} </li>
-                 <li class="list-group-item">GPS: ${phoneDetails.others.GPS}</li>
-                 <li class="list-group-item">NFC ${phoneDetails.others.NFC}</li>
-                 <li class="list-group-item">Radio: ${phoneDetails.others.Radio}</li>
-                 <li class="list-group-item">USB: ${phoneDetails.others.USB}</li>
+                 <li class="list-group-item">WLAN: ${phoneDetails?.others?.WLAN}</li>
+                 <li class="list-group-item">Bluetooth: ${phoneDetails?.others?.Bluetooth} </li>
+                 <li class="list-group-item">GPS: ${phoneDetails?.others?.GPS}</li>
+                 <li class="list-group-item">NFC ${phoneDetails?.others?.NFC}</li>
+                 <li class="list-group-item">Radio: ${phoneDetails?.others?.Radio}</li>
+                 <li class="list-group-item">USB: ${phoneDetails?.others?.USB}</li>
                </ul>
               </li>
-              <li class="list-group-item list-group-item-dark">${phoneDetails.releaseDate}</li>
+              <li class="list-group-item list-group-item-dark">${phoneDetails?.releaseDate}</li>
       `;
       phoneInfo.appendChild(div);
 }
